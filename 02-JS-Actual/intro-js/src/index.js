@@ -60,3 +60,40 @@ const arr = useState("Goku");
 arr[1](); //calling de function
 
 //tarea
+
+/*PROMESAS*/
+//basic sintaxis
+
+const promesa = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    //logic goes here
+    console.log("something");
+    resolve(); //that triggers the .then
+  });
+}, 2000);
+
+promesa
+  .then((param) => {
+    /*logic goes here too */
+  })
+  .catch((e) => console.error(e));
+
+//-------------------------------------------------
+//standar sintaxis
+const getMyDatabyID = (id) => {
+  const promesa = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      //logic goes here
+      const data = 1;
+      if (data) {
+        resolve(data); //that triggers the .then
+      } else {
+        reject("not found");
+      }
+    });
+  }, 2000);
+};
+
+getMyDatabyID(5)
+  .then(console.log("this is the then"))
+  .catch((e) => console.warn(e)); //-> catch(console.warn);
