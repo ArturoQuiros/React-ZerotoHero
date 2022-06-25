@@ -6,7 +6,7 @@ const CounterApp = ({ value = 0 }) => {
   const handleAdd = () => {
     setCount(count + 1);
   };
-  const handleLess = () => {
+  const handleSubstract = () => {
     setCount(count - 1);
   };
   const handleReset = () => {
@@ -18,7 +18,7 @@ const CounterApp = ({ value = 0 }) => {
       <h1>CounterApp</h1>
       <h2> {count} </h2>
       <button onClick={handleAdd}>+1</button>
-      <button onClick={handleLess}>-1</button>
+      <button onClick={handleSubstract}>-1</button>
       <button onClick={handleReset}>reset</button>
     </>
   );
