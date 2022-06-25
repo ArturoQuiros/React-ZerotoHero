@@ -1,9 +1,15 @@
-import { getSaludo } from "../../src/base-pruebas/02-template-string";
+import { getSaludo } from '../../src/base-pruebas/02-template-string';
 
-describe("Pruebas en 02-string", () => {
-  test("Prueba de que retorne un saludo con el nombre", () => {
-    const name = "Arturo";
-    const msg = getSaludo(name);
-    expect(msg).toBe(`Hola ${name}`);
-  });
+
+describe('Pruebas en 02-template-string', () => {
+    
+    test('getSaludo debe de retornar "Hola Fernando"', () => {
+        
+        const name = 'Fernando';
+        const message = getSaludo( name );
+
+        expect( message ).toBe(`Hola ${ name }`)
+
+    });
+
 });

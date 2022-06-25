@@ -1,7 +1,16 @@
-h1 {
-  color: red;
+
+
+html, body {
+    background-color: #21232A;
+    color: white;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 1.3rem;
+    padding: 70px;
 }
 
-h2 {
-  color: blue;
+
+button {
+    padding: 15px;
+    font-size: 1.3rem;
+    margin-right: 5px;
 }
