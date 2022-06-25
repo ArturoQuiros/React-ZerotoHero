@@ -5,32 +5,7 @@
     "**/.hg": true,
     "**/CVS": true,
     "**/.DS_Store": true,
-    "**/Thumbs.db": true,
-    "node_modules": true,
-    "README.md": true,
-    "01-Intro": true,
-    "02-JS-Actual": true,
-    ".vscode": true,
-    "03-React1/my-app": true,
-    "03-React1/vite-project/node_modules": true,
-    "03-React1/vite-project/index.html": true,
-    "03-React1/vite-project/package.json": true,
-    "03-React1/vite-project/package-lock.json": true,
-    "03-React1/vite-project/vite.config.js": true,
-    "03-React1/vite-project/.gitignore": true
+    "**/Thumbs.db": true
   },
-  "hide-files.files": [
-    "node_modules",
-    "README.md",
-    "01-Intro",
-    "02-JS-Actual",
-    ".vscode",
-    "03-React1/my-app",
-    "03-React1/vite-project/node_modules",
-    "03-React1/vite-project/index.html",
-    "03-React1/vite-project/package.json",
-    "03-React1/vite-project/package-lock.json",
-    "03-React1/vite-project/vite.config.js",
-    "03-React1/vite-project/.gitignore"
-  ]
+  "hide-files.files": []
 }
