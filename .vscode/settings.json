@@ -5,7 +5,18 @@
     "**/.hg": true,
     "**/CVS": true,
     "**/.DS_Store": true,
-    "**/Thumbs.db": true
+    "**/Thumbs.db": true,
+    "02-JS-Actual": true,
+    "01-Intro": true,
+    ".vscode": true,
+    "03-React1": true,
+    "README.md": true
   },
-  "hide-files.files": []
+  "hide-files.files": [
+    "02-JS-Actual",
+    "01-Intro",
+    ".vscode",
+    "03-React1",
+    "README.md"
+  ]
 }
