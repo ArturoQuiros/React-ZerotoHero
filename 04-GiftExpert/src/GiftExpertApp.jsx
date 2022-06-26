@@ -1,20 +1,22 @@
 import { useState } from "react";
 import AddCategory from "./components/AddCategory";
+import GifGrid from "./components/GifGrid";
 
 const GiftExpertApp = () => {
-  const [categories, setCategories] = useState(["DBZ", "Naruto"]);
+  const [categories, setCategories] = useState(["DBZ"]);
   const onAddCategory = (newCategorie) => {
+    if (categories.includes(newCategorie)) return;
     setCategories([...categories, newCategorie]);
   };
   return (
     <>
       <h1>Gift Expert App</h1>
+
       <AddCategory onNewCategory={onAddCategory} />
-      <ul>
-        {categories.map((category) => {
-          return <li key={category}>{category}</li>;
-        })}
-      </ul>
+
+      {categories.map((category) => (
+        <GifGrid key={category} category={category} />
+      ))}
     </>
   );
 };
