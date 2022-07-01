@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { AddCategory, GifGrid } from "./components";
+import AddCategory from "./components/AddCategory";
+import GifGrid from "./components/GifGrid";
 
 const GiftExpertApp = () => {
   const [categories, setCategories] = useState(["DBZ"]);
