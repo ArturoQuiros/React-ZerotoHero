@@ -6,7 +6,7 @@ const GiftExpertApp = () => {
   const [categories, setCategories] = useState(["DBZ"]);
   const onAddCategory = (newCategorie) => {
     if (categories.includes(newCategorie)) return;
-    setCategories([...categories, newCategorie]);
+    setCategories([newCategorie, ...categories]);
   };
   return (
     <>
