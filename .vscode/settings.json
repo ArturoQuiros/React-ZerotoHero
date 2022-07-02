@@ -10,13 +10,15 @@
     "01-Intro": true,
     ".vscode": true,
     "03-React1": true,
-    "README.md": true
+    "README.md": true,
+    "04-GiftExpert": true
   },
   "hide-files.files": [
     "02-JS-Actual",
     "01-Intro",
     ".vscode",
     "03-React1",
-    "README.md"
+    "README.md",
+    "04-GiftExpert"
   ]
 }
