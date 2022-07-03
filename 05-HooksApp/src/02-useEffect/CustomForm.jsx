@@ -4,11 +4,13 @@ import { useForm } from "../hooks/useForm";
 import { Message } from "./Message";
 
 export const CustomForm = () => {
-  const { username, email, password, HandleInputChange } = useForm({
-    username: "admin",
-    email: "admin@admin.com",
-    password: "",
-  });
+  const { username, email, password, HandleInputChange, HandleReset } = useForm(
+    {
+      username: "",
+      email: "",
+      password: "",
+    }
+  );
 
   return (
     <>
@@ -38,6 +40,7 @@ export const CustomForm = () => {
         value={password}
         onChange={HandleInputChange}
       ></input>
+      <button onClick={HandleReset}>Reset</button>
     </>
   );
 };
