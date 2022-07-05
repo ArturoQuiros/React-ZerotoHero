@@ -2,10 +2,15 @@ export const todoReducer = (initialState, action) => {
   switch (action.type) {
     case "Add":
       return [...initialState, action.payload];
-    case "Edit":
-      throw new Error("Action.Edit #1 not done");
+    case "Done":
+      return initialState.map((todo) => {
+        if (todo.id === action.payload) {
+          return { ...todo, done: !todo.done };
+        }
+        return todo;
+      });
     case "Delete":
-      throw new Error("Action.type #1 not done");
+      return initialState.filter((todo) => todo.id !== action.payload);
 
     default:
       return initialState;
