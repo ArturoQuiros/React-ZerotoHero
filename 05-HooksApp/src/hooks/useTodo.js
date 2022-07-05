@@ -1,21 +1,12 @@
-//todos
-//handlers
 import React, { useEffect, useReducer } from "react";
-
-const initialState = [
-  /*{
-      id: new Date().getTime(),
-      description: "Recoletar la Gema del Alma",
-      done: false,
-    },*/
-];
+import { todoReducer } from "../08-useReducer/todoReducer";
 
 const init = () => {
   return JSON.parse(localStorage.getItem("todos")) || [];
 };
 
 export const useTodo = () => {
-  const [todos, dispatch] = useReducer(todoReducer, initialState, init);
+  const [todos, dispatch] = useReducer(todoReducer, [], init);
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
@@ -37,12 +28,18 @@ export const useTodo = () => {
   };
 
   const handleToggleTodo = (id) => {
-    console.log({ id });
     dispatch({
       type: "Done",
       payload: id,
     });
   };
 
-  return {};
+  return {
+    todos,
+    todosCount: todos.length,
+    todosPending: todos.filter((todo) => !todo.done).length,
+    handleDeleteTodo,
+    handleNewTodo,
+    handleToggleTodo,
+  };
 };
