@@ -7,12 +7,13 @@ import { SimpleForm } from "./02-useEffect/SimpleForm";
 import { MultipleCustomHooks } from "./03-samples/MultipleCustomHooks";
 import { FocusScreen } from "./04-useRef/FocusScreen";
 import { Layout } from "./05-useLayoutEffect/layout";
+import { MemoHook } from "./06-useMemo/MemoHook";
 import { Memorice } from "./06-useMemo/Memorice";
 import HooksApp from "./HooksApp";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Memorice />
+    <MemoHook />
   </React.StrictMode>
 );
