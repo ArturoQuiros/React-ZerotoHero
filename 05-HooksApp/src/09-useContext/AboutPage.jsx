@@ -1,10 +1,11 @@
-import React from "react";
+
 
 export const AboutPage = () => {
-  return (
-    <>
-      <h1>About</h1>
-      <hr></hr>
-    </>
-  );
-};
+    return (
+      <>
+          <h1>AboutPage</h1>
+          <hr />
+      </>
+    )
+  }
+  
