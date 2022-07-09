@@ -8,19 +8,19 @@
     "**/Thumbs.db": true,
     ".vscode": true,
     "01-Intro": true,
-    "02-JS-Actual": true,
     "03-React1": true,
-    "05-HooksApp": true,
     "README.md": true,
-    "04-GiftExpert": true
+    "04-GiftExpert": true,
+    "02-JS-Actual": true,
+    "05-HooksApp": true
   },
   "hide-files.files": [
     ".vscode",
     "01-Intro",
-    "02-JS-Actual",
     "03-React1",
-    "05-HooksApp",
     "README.md",
-    "04-GiftExpert"
+    "04-GiftExpert",
+    "02-JS-Actual",
+    "05-HooksApp"
   ]
 }
