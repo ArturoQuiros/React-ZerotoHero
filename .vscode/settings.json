@@ -12,7 +12,8 @@
     "README.md": true,
     "04-GiftExpert": true,
     "02-JS-Actual": true,
-    "05-HooksApp": true
+    "05-HooksApp": true,
+    "06-HeroesSPA": true
   },
   "hide-files.files": [
     ".vscode",
@@ -21,6 +22,7 @@
     "README.md",
     "04-GiftExpert",
     "02-JS-Actual",
-    "05-HooksApp"
+    "05-HooksApp",
+    "06-HeroesSPA"
   ]
 }
