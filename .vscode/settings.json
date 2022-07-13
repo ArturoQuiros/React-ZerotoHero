@@ -8,7 +8,6 @@
     "**/Thumbs.db": true,
     ".vscode": true,
     "01-Intro": true,
-    "03-React1": true,
     "README.md": true,
     "04-GiftExpert": true,
     "02-JS-Actual": true,
@@ -18,7 +17,6 @@
   "hide-files.files": [
     ".vscode",
     "01-Intro",
-    "03-React1",
     "README.md",
     "04-GiftExpert",
     "02-JS-Actual",
