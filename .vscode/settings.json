@@ -5,7 +5,26 @@
     "**/.hg": true,
     "**/CVS": true,
     "**/.DS_Store": true,
-    "**/Thumbs.db": true
+    "**/Thumbs.db": true,
+    ".vscode": true,
+    "01-Intro": true,
+    "02-JS-Actual": true,
+    "03-React1": true,
+    "04-GiftExpert": true,
+    "05-HooksApp": true,
+    "06-HeroesSPA": true,
+    "08-toolkit-redux": true,
+    "README.md": true
   },
-  "hide-files.files": []
+  "hide-files.files": [
+    ".vscode",
+    "01-Intro",
+    "02-JS-Actual",
+    "03-React1",
+    "04-GiftExpert",
+    "05-HooksApp",
+    "06-HeroesSPA",
+    "08-toolkit-redux",
+    "README.md"
+  ]
 }
