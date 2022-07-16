@@ -13,7 +13,6 @@
     "04-GiftExpert": true,
     "05-HooksApp": true,
     "06-HeroesSPA": true,
-    "08-toolkit-redux": true,
     "README.md": true
   },
   "hide-files.files": [
@@ -24,7 +23,6 @@
     "04-GiftExpert",
     "05-HooksApp",
     "06-HeroesSPA",
-    "08-toolkit-redux",
     "README.md"
   ]
 }
