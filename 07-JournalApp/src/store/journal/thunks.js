@@ -1,6 +1,12 @@
 import { doc, setDoc, collection } from "firebase/firestore/lite";
 import { FirebaseDB } from "../../firebase";
-import { addNewEmptyNote, savingNewNote, setActiveNote } from "./journalSlice";
+import { loadNotes } from "../../helpers/loadNotes";
+import {
+  addNewEmptyNote,
+  savingNewNote,
+  setActiveNote,
+  setNotes,
+} from "./journalSlice";
 
 export const startNewNote = () => {
   return async (dispatch, getState) => {
@@ -27,5 +33,16 @@ export const startNewNote = () => {
     dispatch(addNewEmptyNote(newNote));
     //activating the new Note
     dispatch(setActiveNote(newNote));
+  };
+};
+
+export const startLoadingNote = () => {
+  return async (dispatch, getState) => {
+    const { uid } = getState().auth;
+    if (!uid) throw new console.error("UID not defined");
+
+    //getting all the notes from firebase
+    const notes = await loadNotes(uid);
+    dispatch(setNotes(notes));
   };
 };
