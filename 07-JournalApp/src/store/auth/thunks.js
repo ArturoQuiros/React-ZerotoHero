@@ -2,6 +2,7 @@ import {
   signInWithGoogle,
   LogingUserWithEmailPassword,
   registerUserWithEmailPassword,
+  logoutFirebase,
 } from "../../firebase";
 import { checkingCredentials, login, logout } from "./authSlice";
 
@@ -59,5 +60,14 @@ export const startLogingUserWithEmailPassword = ({ email, password }) => {
     if (!ok) return dispatch(logout({ errorMessage }));
     //login success
     dispatch(login({ uid, email, displayName, photoURL }));
+  };
+};
+
+export const startLogout = () => {
+  return async (dispatch) => {
+    //logout in Frebase
+    await logoutFirebase();
+    //logout in redux
+    dispatch(logout());
   };
 };
