@@ -1,4 +1,3 @@
-import { DataObjectOutlined } from "@mui/icons-material";
 import { useEffect, useMemo, useState } from "react";
 
 export const useForm = (initialForm = {}, formValidations = {}) => {
@@ -41,7 +40,6 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
     }
 
     setFormValidation(formCheckValues);
-    console.log(formCheckValues);
   };
 
   return {

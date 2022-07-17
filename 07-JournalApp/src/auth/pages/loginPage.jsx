@@ -1,29 +1,64 @@
 import { Link as RouterLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { checkingAuthentication, startGoogleSignIn } from "../../store/auth";
-import { Button, Grid, Link, TextField, Typography } from "@mui/material";
+import {
+  startLogingUserWithEmailPassword,
+  startGoogleSignIn,
+} from "../../store/auth";
+import {
+  Alert,
+  Button,
+  Grid,
+  Link,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { Google } from "@mui/icons-material";
 import { AuthLayout } from "../layout/AuthLayout";
 import { useForm } from "../../hooks/useForm";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
+
+//initial state for the useForm
+const formData = {
+  email: "",
+  password: "",
+};
+
+//Validations for useForm
+const formValidations = {
+  email: [(value) => value.includes("@"), "El correo debe tener @"],
+  password: [(value) => value.length >= 1, "El password no puede ser vacio"],
+};
 
 export const LoginPage = () => {
+  //redux hooks
   const dispatch = useDispatch();
-
-  const { status } = useSelector((state) => state.auth);
-
-  const { email, password, onInputChange } = useForm({
-    email: "arturo.quiros@dbrain.cr",
-    password: "12345",
-  });
+  const { status, errorMessage } = useSelector((state) => state.auth);
 
   const isAuthenticated = useMemo(() => status === "checking", [status]);
 
+  //useForm Hook
+  const {
+    formState,
+    onInputChange,
+    isFormValid,
+    email,
+    password,
+    emailValid,
+    passwordValid,
+  } = useForm(formData, formValidations);
+
+  //avoiding error when form is empty
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
+  //creating the submit functon
   const onSubmit = (event) => {
     event.preventDefault();
-    dispatch(checkingAuthentication());
+    setFormSubmitted(true);
+    if (!isFormValid) return;
+    dispatch(startLogingUserWithEmailPassword(formState));
   };
 
+  //creating the Google submit functon
   const onGoogleSignIn = () => {
     dispatch(startGoogleSignIn());
   };
@@ -34,29 +69,37 @@ export const LoginPage = () => {
         <Grid container></Grid>
         <Grid item xs={12} sx={{ mt: 2 }}>
           <TextField
-            fullWidth
-            label="Correo"
-            type="email"
-            placeholder="youremail@examples.com"
+            error={!!emailValid && formSubmitted}
+            helperText={emailValid}
             name="email"
             value={email}
             onChange={onInputChange}
+            label="Correo"
+            type="email"
+            placeholder="youremail@examples.com"
+            fullWidth
           ></TextField>
         </Grid>
 
         <Grid item xs={12} sx={{ mt: 2 }}>
           <TextField
-            fullWidth
-            label="contraseña"
-            type="password"
-            placeholder="contraseña"
+            error={!!passwordValid && formSubmitted}
+            helperText={passwordValid}
             name="password"
             value={password}
             onChange={onInputChange}
+            label="contraseña"
+            type="password"
+            placeholder="contraseña"
+            fullWidth
           ></TextField>
         </Grid>
 
         <Grid container spacing={2} sx={{ mb: 2, mt: 1 }}>
+          <Grid item xs={12} display={!!errorMessage ? "" : "none"}>
+            <Alert severity="error">{errorMessage}</Alert>
+          </Grid>
+
           <Grid item xs={12} sm={6}>
             <Button
               disabled={isAuthenticated}
