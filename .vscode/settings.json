@@ -13,7 +13,8 @@
     "04-GiftExpert": true,
     "05-HooksApp": true,
     "06-HeroesSPA": true,
-    "README.md": true
+    "README.md": true,
+    "08-toolkit-redux": true
   },
   "hide-files.files": [
     ".vscode",
@@ -23,6 +24,7 @@
     "04-GiftExpert",
     "05-HooksApp",
     "06-HeroesSPA",
-    "README.md"
+    "README.md",
+    "08-toolkit-redux"
   ]
 }
