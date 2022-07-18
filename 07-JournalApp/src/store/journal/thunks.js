@@ -6,6 +6,8 @@ import {
   savingNewNote,
   setActiveNote,
   setNotes,
+  setSaving,
+  updateNote,
 } from "./journalSlice";
 
 export const startNewNote = () => {
@@ -44,5 +46,25 @@ export const startLoadingNote = () => {
     //getting all the notes from firebase
     const notes = await loadNotes(uid);
     dispatch(setNotes(notes));
+  };
+};
+
+export const startUpdateNote = () => {
+  return async (dispatch, getState) => {
+    //saving is turned on
+    dispatch(setSaving());
+    //update in firebase
+    const { uid } = getState().auth;
+    if (!uid) throw new console.error("UID not defined");
+
+    const { active: note } = getState().journal;
+
+    const noteToFirestore = { ...note };
+    delete noteToFirestore.id;
+
+    const docRef = doc(FirebaseDB, `${uid}/journal/notes/${note.id}`);
+    await setDoc(docRef, noteToFirestore, { merge: true });
+    //update in the notes [] state
+    dispatch(updateNote(note));
   };
 };

@@ -4,6 +4,11 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
   const [formState, setFormState] = useState(initialForm);
   const [formValidation, setFormValidation] = useState({});
 
+  //when formu changes, re render
+  useEffect(() => {
+    setFormState(initialForm);
+  }, [initialForm]);
+
   //when state changes, validators run again
   useEffect(() => {
     ceateValidators();
