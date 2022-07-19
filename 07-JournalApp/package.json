@@ -1,5 +1,5 @@
 {
-  "name": "journalapp",
+  "name": "journal-app",
   "private": true,
   "version": "0.0.0",
   "scripts": {
@@ -8,17 +8,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@emotion/react": "^11.9.3",
-    "@emotion/styled": "^11.9.3",
-    "@mui/icons-material": "^5.8.4",
-    "@mui/material": "^5.8.7",
-    "@reduxjs/toolkit": "^1.8.3",
-    "firebase": "^9.9.0",
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.8.0",
+    "@mui/material": "^5.8.0",
+    "@reduxjs/toolkit": "^1.8.1",
+    "firebase": "^9.8.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-redux": "^8.0.2",
-    "react-router-dom": "^6.3.0",
-    "sweetalert2": "^11.4.23"
+    "react-redux": "^8.0.1",
+    "react-router-dom": "6",
+    "sweetalert2": "^11.4.14"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",
