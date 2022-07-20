@@ -14,7 +14,8 @@
     "05-HooksApp": true,
     "06-HeroesSPA": true,
     "README.md": true,
-    "08-toolkit-redux": true
+    "08-toolkit-redux": true,
+    "07-JournalApp": true
   },
   "hide-files.files": [
     ".vscode",
@@ -25,6 +26,7 @@
     "05-HooksApp",
     "06-HeroesSPA",
     "README.md",
-    "08-toolkit-redux"
+    "08-toolkit-redux",
+    "07-JournalApp"
   ]
 }
