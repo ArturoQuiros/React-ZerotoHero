@@ -5,21 +5,7 @@ import { addHours } from "date-fns";
 import { NavBar, CalendarEvent, CalendarModal } from "../";
 import { localizer, getMessagesES } from "../../helpers";
 import { useState } from "react";
-import { useUiStore } from "../../hooks";
-
-const events = [
-  {
-    title: "Cumpleaños",
-    notes: "buy a cake",
-    start: new Date(),
-    end: addHours(new Date(), 2),
-    bgcolor: "fafafa",
-    user: {
-      _id: "123",
-      name: "Arturo",
-    },
-  },
-];
+import { useUiStore, useCalendarStore } from "../../hooks";
 
 export const CalendarPage = () => {
   const eventStyleGetter = (event, start, end, isSelected) => {
@@ -38,13 +24,14 @@ export const CalendarPage = () => {
   );
 
   const { openModal, closeModal } = useUiStore();
+  const { events, setActiveEvent } = useCalendarStore();
 
   const onDobleClick = (event) => {
     openModal();
   };
 
   const onSelect = (event) => {
-    console.log({ click: event });
+    setActiveEvent(event);
   };
 
   const onViewChange = (event) => {
@@ -56,7 +43,7 @@ export const CalendarPage = () => {
     <>
       <NavBar />
       <Calendar
-        components={{ event: CalendarEvent }}
+        //components={{ event: events }}
         culture="es"
         messages={getMessagesES()}
         localizer={localizer}
