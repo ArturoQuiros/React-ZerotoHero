@@ -28,7 +28,7 @@ Modal.setAppElement("#root");
 export const CalendarModal = () => {
   //store
   const { isModalOpen, closeModal } = useUiStore();
-  const { activeEvent } = useCalendarStore();
+  const { activeEvent, startSavingEvent } = useCalendarStore();
 
   //Form Validations
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -75,18 +75,20 @@ export const CalendarModal = () => {
     closeModal();
   };
 
-  const onSubmit = (event) => {
+  const onSubmit = async (event) => {
     event.preventDefault();
 
-    const diff = differenceInSeconds(formValue.end, formValue.start);
-    console.log("-" + titleClass);
     setFormSubmitted(true);
+    const diff = differenceInSeconds(formValue.end, formValue.start);
 
     if (isNaN(diff) || diff <= 0) {
       Swal.fire("Check dates", "Please, check the dates", "error");
-      setFormSubmitted(true);
       return;
     }
+
+    await startSavingEvent(formValue);
+    closeModal();
+    setFormSubmitted(false);
   };
 
   return (
