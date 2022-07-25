@@ -2,18 +2,28 @@ const { response } = require("express");
 const User = require("../models/user");
 
 const createUser = async (req, res = response) => {
-  //const { name, email, password } = req.body;
-  //new instance of user
-  const user = new User(req.body);
-  console.log(JSON.stringify(user));
+  const { email, password } = req.body;
 
   try {
+    //new instance of user
+    let user = await User.findOne({ email });
+
+    if (user) {
+      return res.status(400).json({
+        ok: false,
+        msg: "email already in use",
+      });
+    }
+
+    //create the new user
+    user = new User(req.body);
     //save on mongo
     await user.save();
     //correct response
     res.status(201).json({
       ok: true,
-      msg: "registro exitoso",
+      uid: user.id,
+      name: user.name,
     });
   } catch (error) {
     //error
