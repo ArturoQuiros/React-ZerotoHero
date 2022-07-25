@@ -1,6 +1,6 @@
 //  Auth Routes on  /api/auth
 
-const { Router } = require("express");
+const { Router, application } = require("express");
 const router = Router();
 
 const {

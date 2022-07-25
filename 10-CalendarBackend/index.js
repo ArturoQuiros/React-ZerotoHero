@@ -6,7 +6,8 @@ const app = express();
 //public
 app.use(express.static("public"));
 
-//rutas
+//Ruta, lectura y parseo de Auth
+app.use(express.json("./routes/auth"));
 app.use("/api/auth", require("./routes/auth"));
 
 //listen
