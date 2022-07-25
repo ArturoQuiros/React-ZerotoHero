@@ -1,4 +1,5 @@
 const { response } = require("express");
+const { generateJWT } = require("../helpers/jwt");
 const bcrypt = require("bcryptjs");
 const User = require("../models/user");
 
@@ -25,11 +26,16 @@ const createUser = async (req, res = response) => {
 
     //save on mongo
     await user.save();
+
+    //generate JWT
+    const token = await generateJWT(user.id, user.name);
+
     //correct response
     res.status(201).json({
       ok: true,
       uid: user.id,
       name: user.name,
+      token,
     });
   } catch (error) {
     //error
@@ -62,10 +68,15 @@ const loginUser = async (req, res = response) => {
       });
     }
 
+    //generate JWT
+    const token = await generateJWT(user.id, user.name);
+
     //correct password
     res.status(200).json({
       ok: true,
-      msg: "welcome",
+      uid: user.id,
+      name: user.name,
+      token,
     });
   } catch (error) {
     //error
@@ -74,14 +85,6 @@ const loginUser = async (req, res = response) => {
       msg: "Error, contact sys admin",
     });
   }
-
-  //correct response
-  res.status(200).json({
-    ok: true,
-    msg: "login",
-    email,
-    password,
-  });
 };
 
 const revalidateToken = (req, res = response) => {
