@@ -28,7 +28,14 @@ router.post(
   validarCampos,
   newEvent
 );
-router.put("/:id", validateJWT, updateEvent);
+router.put(
+  "/:id",
+  [check("title", "title is requerid").not().isEmpty()],
+  [check("start", "start date is requerid").custom(isDate)],
+  [check("end", "end date is requerid").custom(isDate)],
+  validarCampos,
+  updateEvent
+);
 router.delete("/:id", validateJWT, deleteEvent);
 
 module.exports = router;
