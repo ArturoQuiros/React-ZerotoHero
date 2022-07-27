@@ -24,7 +24,7 @@ router.post(
   "/",
   [check("title", "title is requerid").not().isEmpty()],
   [check("start", "start date is requerid").custom(isDate)],
-  //[check("end", "end date is requerid").not().isEmpty()],
+  [check("end", "end date is requerid").custom(isDate)],
   validarCampos,
   newEvent
 );
