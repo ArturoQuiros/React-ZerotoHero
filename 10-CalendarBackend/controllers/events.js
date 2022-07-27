@@ -40,7 +40,7 @@ const updateEvent = async (req, res = response) => {
     const event = await Event.findById(eventId);
 
     if (!event) {
-      res.status(404).json({
+      return res.status(404).json({
         ok: false,
         msg: "not found",
       });
@@ -76,12 +76,41 @@ const updateEvent = async (req, res = response) => {
   }
 };
 
-const deleteEvent = (req, res = response) => {
-  //correct response
-  res.status(200).json({
-    ok: true,
-    msg: "delete event",
-  });
+const deleteEvent = async (req, res = response) => {
+  const eventId = req.params.id;
+  const uid = req.uid;
+
+  try {
+    const event = await Event.findById(eventId);
+
+    if (!event) {
+      return res.status(404).json({
+        ok: false,
+        msg: "not found",
+      });
+    }
+
+    if (event.user.toString() !== uid) {
+      return res.status(401).json({
+        ok: false,
+        msg: "not authorized",
+      });
+    }
+
+    //----------------
+    await Event.findByIdAndDelete(eventId);
+
+    res.status(200).json({
+      ok: true,
+    });
+  } catch (error) {
+    //error response
+    console.log(error);
+    res.status(500).json({
+      ok: false,
+      msg: "error",
+    });
+  }
 };
 
 module.exports = {
