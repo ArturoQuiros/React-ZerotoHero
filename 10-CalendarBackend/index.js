@@ -23,5 +23,5 @@ app.use("/api/events", require("./routes/events"));
 
 //listen
 app.listen(process.env.PORT, () => {
-  console.log("My server is running");
+  console.log(`Running on ${process.env.PORT}`);
 });
