@@ -1,9 +1,11 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { LoginPage } from "../auth/pages/LoginPage";
 import { CalendarPage } from "../calendar/pages/CalendarPage";
+import { getENV } from "../helpers";
 
 export const AppRouter = () => {
   const auth = "not-auth";
+
   return (
     <>
       <Routes>
