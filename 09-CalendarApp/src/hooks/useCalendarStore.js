@@ -6,16 +6,8 @@ import {
   onDeleteEvent,
   onSetActiveEvent,
   onUpdateEvent,
+  onLoadEvents,
 } from "../store/calendar/calendarSlice";
-
-export const startLoadingEvents = async () => {
-  try {
-    const { data } = await calendarApi.get("/events");
-    const events = convertEventToDate(data.events);
-  } catch (error) {
-    console.log(error);
-  }
-};
 
 export const useCalendarStore = () => {
   const { events, activeEvent } = useSelector((state) => state.calendar);
@@ -36,13 +28,23 @@ export const useCalendarStore = () => {
     } else {
       //create
       const { data } = await calendarApi.post("/events", calendarEvent);
-      console.log(data);
       dispatch(onAddNewEvent({ ...calendarEvent, id: data.event.id, user }));
     }
   };
 
   const startDeleteEvent = () => {
     dispatch(onDeleteEvent());
+  };
+
+  const startLoadingEvents = async () => {
+    try {
+      const { data } = await calendarApi.get("/events");
+      const events = convertEventToDate(data.events);
+
+      dispatch(onLoadEvents(events));
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return {
