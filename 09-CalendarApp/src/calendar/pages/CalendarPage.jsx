@@ -2,7 +2,7 @@ import { Calendar } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import { NavBar, CalendarModal, FabAddNew, FabDelete } from "../";
 import { localizer, getMessagesES } from "../../helpers";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useUiStore, useCalendarStore } from "../../hooks";
 
 export const CalendarPage = () => {
@@ -22,7 +22,7 @@ export const CalendarPage = () => {
   );
 
   const { openModal, closeModal } = useUiStore();
-  const { events, setActiveEvent } = useCalendarStore();
+  const { events, setActiveEvent, startLoadingEvents } = useCalendarStore();
 
   const onDobleClick = (event) => {
     openModal();
@@ -36,6 +36,11 @@ export const CalendarPage = () => {
     localStorage.setItem("lastView", event);
     setLastView(lastView);
   };
+
+  //-------------get events--------
+  useEffect(() => {
+    startLoadingEvents();
+  }, []);
 
   return (
     <>
